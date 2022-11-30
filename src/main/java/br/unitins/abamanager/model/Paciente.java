@@ -1,9 +1,12 @@
 package br.unitins.abamanager.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Paciente {
@@ -11,15 +14,18 @@ public class Paciente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private String nome;
-	private String profissionalResponsavel;
 	private String telefone;
 	private String email;
 	private String cpf;
 	private String endereco;
+	private String observacao;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	private User user;
 
-	//GETTERS E SETTERS
+	// GETTERS E SETTERS
 	public Long getId() {
 		return id;
 	}
@@ -34,14 +40,6 @@ public class Paciente {
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public String getProfissionalResponsavel() {
-		return profissionalResponsavel;
-	}
-
-	public void setProfissionalResponsavel(String profissionalResponsavel) {
-		this.profissionalResponsavel = profissionalResponsavel;
 	}
 
 	public String getTelefone() {
@@ -75,5 +73,21 @@ public class Paciente {
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
-	
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public String getObservacao() {
+		return observacao;
+	}
+
+	public void setObservacao(String observacao) {
+		this.observacao = observacao;
+	}
+
 }

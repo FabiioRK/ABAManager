@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link src="../../../../dist/output.css" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<title>Home</title>
+</head>
+
+<body>
+	<div class="flex h-full">
+		<div class="hidden lg:flex lg:flex-shrink-0 h-screen">
+			<div class="flex w-64 flex-col">
+				<div class="flex min-h-0 flex-1 flex-col border-r border-gray-200 bg-[#49c5b6]">
+					<div class="flex flex-1 flex-col overflow-y-auto pt-5 pb-4">
+						<div class="flex flex-shrink-0 items-center px-4">
+							<img class="h-8 w-auto" src="../img/logoaba.png" alt="ABAManager">
+						</div>
+						<nav class="mt-5 flex-1" aria-label="Sidebar">
+							<div class="space-y-1 px-2">
+								<a href="/home" class="bg-gray-200 text-gray-9000 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+									<svg class="text-gray-900 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+											d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                                    </svg>
+									Pacientes
+								</a>
+							</div>
+							<div class="space-y-1 px-2">
+								<a href="#" class="bg-gray-200 text-gray-9000 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+									<svg class="text-gray-900 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+											d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                                    </svg>
+									Relatórios
+								</a>
+							</div>
+							<div class="space-y-1 px-2">
+								<a href="#" class="bg-gray-200 text-gray-9000 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+									<svg class="text-gray-900 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+											d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                                    </svg>
+									Perfil
+								</a>
+							</div>
+							<div class="space-y-1 px-2">
+								<a href="#" onclick="document.querySelector('#form-login').submit()" class="bg-gray-200 text-gray-9000 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+									<svg class="text-gray-900 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+											d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                                    </svg>
+									Sair
+								</a>
+								<form id="form-login" th:action="@{/logout}" method="post"></form>
+							</div>
+						</nav>
+					</div>
+
+					<div class="flex flex-shrink-0 border-t border-gray-200 pt-2 pl-2 h-11">
+						<div>
+							<a href="#" class="flex d-flex align-items-center text-gray-900 text-decoration-none">
+								<img src="https://cdn-icons-png.flaticon.com/512/74/74472.png" alt="" width="32" height="32" class="rounded-full me-2 flex-col mx-2">
+								<span class="text-sm font-medium flex-col h-full" th:text="${#authentication.getName()}">
+									nome do profissional
+									<strong>
+										<svg class="w-6 align-left h-6 inline text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+                                        </svg>
+									</strong>
+								</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="flex min-w-0 flex-1 flex-col overflow-hidden">
+			<div class="lg:hidden">
+				<div class="flex items-center justify-between border-b border-gray-200 bg-gray-50 px-4 py-1.5">
+					<div>
+						<img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="ABAManager">
+					</div>
+					<div>
+						<button type="button" class="-mr-3 inline-flex h-12 w-12 items-center justify-center rounded-md text-gray-500 hover:text-gray-900">
+							<span class="sr-only">Mobile Menu</span>
+							<svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                            </svg>
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="relative z-0 flex flex-1 overflow-hidden mt-4">
+				<main class="relative z-0 flex-1 overflow-y-auto focus:outline-none">
+					<div class="px-4 sm:px-6 lg:px-8">
+						<div class="sm:flex sm:items-center">
+							<div class="sm:flex-auto">
+								<h1 class="text-xl font-semibold text-gray-900">Pacientes</h1>
+								<p class="mt-2 text-sm text-gray-700">Gerenciar pacientes</p>
+							</div>
+							<div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
+								<a href="/paciente/formulario">
+									<button
+										class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">
+										Cadastrar</button>
+								</a>
+							</div>
+						</div>
+						<div class="mt-8 flex flex-col">
+							<div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
+								<div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+									<div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+										<table class="min-w-full divide-y divide-gray-300">
+											<thead class="bg-gray-50">
+												<tr>
+													<th scope="col" class="whitespace-nowrap py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Nome</th>
+													<th scope="col" class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900">Email</th>
+													<th scope="col" class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900">Telefone</th>
+													<th scope="col" class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900">Endereco</th>
+													<th scope="col" class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900">Atividade</th>
+													<th scope="col" class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900">Observação</th>
+													<th scope="col" class="relative whitespace-nowrap py-3.5 pl-3 pr-4 sm:pr-6">
+														<span class="sr-only">Editar</span>
+													</th>
+												</tr>
+											</thead>
+											<tbody class="divide-y divide-gray-200 bg-white">
+												<tr th:each="paciente : ${pacientes}">
+													<td th:text="${paciente.nome}" class="whitespace-nowrap py-2 pl-4 pr-3 text-sm text-gray-900 sm:pl-6">Roberto</td>
+													<td th:text="${paciente.email}" class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">roberto@mail.com</td>
+													<td th:text="${paciente.telefone}" class="whitespace-nowrap px-2 py-2 text-sm text-gray-500">43464544</td>
+													<td th:text="${paciente.endereco}" class="whitespace-nowrap px-2 py-2 text-sm text-gray-500">Endereco</td>
+													<td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500">deveria ser um array</td>
+													<td th:text="${paciente.observacao}" class="whitespace-nowrap px-2 py-2 text-sm text-gray-500">array tbm</td>
+													<td class="relative whitespace-nowrap py-2 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+														<a class="text-indigo-600 hover:text-indigo-900 edit"> Editar </a>
+														|
+														<a th:href="@{delete(id=${paciente.id})}" method="get" class="text-indigo-600 hover:text-indigo-900"> Remover </a>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</main>
+			</div>
+		</div>
+	</div>
+	<script language="JavaScript" type="text/javascript" src="../js/paciente/paciente.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+	<script language="JavaScript" type="text/javascript" src="../js/index.js"></script>
+</body>
+
+</html>

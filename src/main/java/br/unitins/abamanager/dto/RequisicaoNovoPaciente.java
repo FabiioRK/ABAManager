@@ -1,27 +1,33 @@
 package br.unitins.abamanager.dto;
+
 import br.unitins.abamanager.model.Paciente;
+import jakarta.validation.constraints.NotBlank;
 
 public class RequisicaoNovoPaciente {
 
+	@NotBlank
 	private String nome;
-	private String profissionalResponsavel;
+	@NotBlank
 	private String telefone;
+	@NotBlank
 	private String email;
+	@NotBlank
 	private String cpf;
+	@NotBlank
 	private String endereco;
 
+	private String observacao;
+	
 	public Paciente toPaciente() {
 		Paciente paciente = new Paciente();
 		paciente.setNome(nome);
-		paciente.setProfissionalResponsavel(profissionalResponsavel);
 		paciente.setTelefone(telefone);
 		paciente.setEmail(email);
 		paciente.setCpf(cpf);
 		paciente.setEndereco(endereco);
-
+		paciente.setObservacao(observacao);
 		return paciente;
 	}
-	// GETTERS E SETTERS
 
 	public String getNome() {
 		return nome;
@@ -29,14 +35,6 @@ public class RequisicaoNovoPaciente {
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public String getProfissionalResponsavel() {
-		return profissionalResponsavel;
-	}
-
-	public void setProfissionalResponsavel(String profissionalResponsavel) {
-		this.profissionalResponsavel = profissionalResponsavel;
 	}
 
 	public String getTelefone() {
@@ -69,6 +67,14 @@ public class RequisicaoNovoPaciente {
 
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
+	}
+
+	public String getObservacao() {
+		return observacao;
+	}
+
+	public void setObservacao(String observacao) {
+		this.observacao = observacao;
 	}
 
 }
