@@ -2,10 +2,13 @@ package br.unitins.abamanager.model;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -20,6 +23,10 @@ public class User {
 
 	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
 	private List<Paciente> pacientes;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "profissional_id", referencedColumnName = "id")
+	private Profissional profissional;
 
 	// GETTERS E SETTERS
 	public String getUsername() {
@@ -53,5 +60,14 @@ public class User {
 	public void setPacientes(List<Paciente> pacientes) {
 		this.pacientes = pacientes;
 	}
+
+	public Profissional getProfissional() {
+		return profissional;
+	}
+
+	public void setProfissional(Profissional profissional) {
+		this.profissional = profissional;
+	}
+	
 
 }

@@ -23,6 +23,7 @@ public class WebSecurityConfig {
 	
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+		http.authorizeHttpRequests().requestMatchers("/img/**").permitAll();
 		http.authorizeHttpRequests().anyRequest().authenticated().and()
 				.formLogin(
 						form -> form.loginPage("/login")
