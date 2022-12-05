@@ -14,14 +14,15 @@
 <body>
 	<div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
 		<div class="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-4xl sm:p-6">
-			<form class="grid sm:grid-cols-1 gap-4 formulario" th:object="${atividade}" th:action="@{/atividade/salvar}" method="POST">
+			<form class="grid sm:grid-cols-1 gap-4 formulario" th:object="${atividade}" th:action="@{/atividades/salvar/{idPaciente}(idPaciente=${paciente.id})}" method="POST">
+			<input type="hidden" readonly id="id" name="id" th:field="*{id}" />
 				<div>
 					<h3 class="text-lg font-medium leading-6 text-gray-900">Atividades</h3>
 					<p class="mt-1 text-sm text-gray-500">Preencha os campos de atividades</p>
 				</div>
 				<div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
 					<div class="sm:col-span-3">
-						<label for="titulo" class="block text-sm font-medium text-gray-700">Nome da atividade</label>
+						<label for="titulo" class="block text-sm font-medium text-gray-700">Título</label>
 						<div class="mt-1">
 							<input type="text" th:field="*{titulo}" th:errorClass="is-invalid" autocomplete="titulo"
 								class="p-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm border h-7" />
@@ -50,13 +51,13 @@
 					<div class="sm:col-span-3">
 						<label for="nota" class="block text-sm font-medium text-gray-700">Nota</label>
 						<div class="mt-1">
-							<input th:field="*{nota}" th:errorClass="is-invalid" type="email" autocomplete="email"
+							<input th:field="*{nota}" th:errorClass="is-invalid" autocomplete="nota"
 								class="p-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm border h-7" />
 							<div class="invalid-feedback" th:errors="*{nota}">Erro na nota da atividade</div>
 						</div>
 					</div>
 
-					<div class="sm:col-span-2">
+					<div class="sm:col-span-3">
 						<label for="observacao" class="block text-sm font-medium text-gray-700">Observação</label>
 						<div class="mt-1">
 							<input type="text" name="observacao" id="observacao" autocomplete="observacao"

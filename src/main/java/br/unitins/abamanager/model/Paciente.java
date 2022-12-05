@@ -2,6 +2,7 @@ package br.unitins.abamanager.model;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -24,7 +25,7 @@ public class Paciente {
 	private String endereco;
 	private String observacao;
 	
-	@OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY)
+	@OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true, mappedBy = "paciente", fetch = FetchType.LAZY)
 	private List<Atividade> atividades;
 	
 	@ManyToOne(fetch = FetchType.LAZY)

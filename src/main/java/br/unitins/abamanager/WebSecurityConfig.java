@@ -37,13 +37,20 @@ public class WebSecurityConfig {
 	@Bean
 	public UserDetailsManager users(DataSource dataSource) {
 //		UserDetails user = User.builder()
-//			.username("profissional2@gmail.com")
-//			.password(passwordEncoder().encode("profissional"))
+//			.username("root@gmail.com")
+//			.password(passwordEncoder().encode("root"))
+//			.roles("ADM")
+//			.build();
+		
+//		UserDetails user2 = User.builder()
+//			.username("profissional@gmail.com")
+//			.password(passwordEncoder().encode("123"))
 //			.roles("ADM")
 //			.build();
 		
 		JdbcUserDetailsManager users = new JdbcUserDetailsManager(dataSource);
 //		users.createUser(user);
+//		users.createUser(user2);
 		return users;
 	}
 

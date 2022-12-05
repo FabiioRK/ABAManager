@@ -2,6 +2,7 @@ package br.unitins.abamanager.dto;
 
 import br.unitins.abamanager.model.Atividade;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public class RequisicaoNovaAtividade {
 
@@ -9,7 +10,7 @@ public class RequisicaoNovaAtividade {
 	private String titulo;
 	@NotBlank
 	private String descricao;
-
+	@NotNull
 	private Double nota;
 	@NotBlank
 	private String data;

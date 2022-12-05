@@ -19,8 +19,19 @@
 								<h1 class="text-xl font-semibold text-gray-900">Atividades</h1>
 								<p class="mt-2 text-sm text-gray-700">Gerenciar atividades</p>
 							</div>
+							<div th:if="${message}">
+								<span style="color: #1ca325" th:text="${message}"></span>
+							</div>
+							<div th:if="${delmessage}" class="message">
+								<span style="color: #a31c1c" th:text="${delmessage}"></span>
+							</div>
 							<div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-								<a href="/atividades/formulario">
+								<a th:href="@{/atividades/report/pdf/{idPaciente}(idPaciente=${paciente.id})}">
+									<button
+										class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">
+										Gerar Relatório</button>
+								</a>
+								<a th:href="@{/atividades/formulario/{idPaciente}(idPaciente=${paciente.id})}">
 									<button
 										class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">
 										Cadastrar</button>
@@ -49,13 +60,33 @@
 													<td th:text="${atividade.nota}" class="whitespace-nowrap px-2 py-2 text-sm text-gray-500">9.4</td>
 													<td th:text="${atividade.observacao}" class="whitespace-nowrap px-2 py-2 text-sm text-gray-500">Alguma coisa</td>
 													<td class="relative whitespace-nowrap py-2 pl-1 pr-2 text-right text-sm font-medium sm:pr-6">
-														<form action="#" th:action="@{editar/{id}(id=${atividade.id})}">
+														<form action="#" th:action="@{editar/{idPaciente}/{id}(id=${atividade.id}, idPaciente=${paciente.id})}">
 															<button type="submit" class="text-indigo-600 hover:text-indigo-900">Editar</button>
 														</form>
 														|
-														<form action="#" th:action="@{remover/{id}(id=${atividade.id})}">
-															<button type="submit" class="text-indigo-600 hover:text-indigo-900">Remover</button>
-														</form>
+														<button type="button" class="text-indigo-600 hover:text-indigo-900" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Remover</button>
+														<div class="modal fade bg-opacity-50 fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+															tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+															<div class="modal-dialog relative w-auto pointer-events-none">
+																<div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
+																	<div class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
+																		<h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalLabel">Tem certeza que deseja remover?</h5>
+																		<button type="button"
+																			class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
+																			data-bs-dismiss="modal" aria-label="Close"></button>
+																	</div>
+																	<div class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
+																		<button type="button"
+																			class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out"
+																			data-bs-dismiss="modal">Cancelar</button>
+																		<form action="#" th:action="@{remover/{idPaciente}/{id}(id=${atividade.id}, idPaciente=${paciente.id})}">
+																			<button type="submit"
+																				class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1">Remover</button>
+																		</form>
+																	</div>
+																</div>
+															</div>
+														</div>
 													</td>
 												</tr>
 											</tbody>
@@ -69,10 +100,8 @@
 			</div>
 		</div>
 	</div>
-	<script language="JavaScript" type="text/javascript" src="../js/paciente/paciente.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-	<script language="JavaScript" type="text/javascript" src="../js/index.js"></script>
 </body>
 
 </html>
