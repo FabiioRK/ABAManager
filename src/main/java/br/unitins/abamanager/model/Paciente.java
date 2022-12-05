@@ -25,7 +25,7 @@ public class Paciente {
 	private String endereco;
 	private String observacao;
 	
-	@OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true, mappedBy = "paciente", fetch = FetchType.LAZY)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "paciente", fetch = FetchType.LAZY)
 	private List<Atividade> atividades;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -103,6 +103,5 @@ public class Paciente {
 	public void setAtividades(List<Atividade> atividades) {
 		this.atividades = atividades;
 	}
-	
 
 }
