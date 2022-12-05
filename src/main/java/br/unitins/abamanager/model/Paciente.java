@@ -1,5 +1,8 @@
 package br.unitins.abamanager.model;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -21,6 +24,9 @@ public class Paciente {
 	private String cpf;
 	private String endereco;
 	private String observacao;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "paciente", fetch = FetchType.LAZY)
+	private List<Atividade> atividades;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	private User user;
@@ -88,6 +94,14 @@ public class Paciente {
 
 	public void setObservacao(String observacao) {
 		this.observacao = observacao;
+	}
+
+	public List<Atividade> getAtividades() {
+		return atividades;
+	}
+
+	public void setAtividades(List<Atividade> atividades) {
+		this.atividades = atividades;
 	}
 
 }

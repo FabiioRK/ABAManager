@@ -8,12 +8,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import br.unitins.abamanager.model.Paciente;
+import br.unitins.abamanager.model.Atividade;
 
 @Repository
-public interface PacienteRepository extends JpaRepository<Paciente, Long>{
+public interface AtividadeRepository extends JpaRepository<Atividade, Long>{
 
-	@Query("SELECT p FROM Paciente p JOIN p.user u WHERE u.username = :username")
-	List<Paciente> findAllByUsuario(@Param("username") String username, Sort sort);
+	@Query("SELECT a FROM Atividade a JOIN a.paciente u WHERE u.id = :id")
+	List<Atividade> findAllByPaciente(@Param("id") Long id, Sort sort);
 	
 }
