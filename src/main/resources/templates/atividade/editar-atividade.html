@@ -66,7 +66,7 @@
 					</div>
 				</div>
 				<div class="flex justify-end gap-3">
-					<a href="/home">
+					<a th:href="@{/atividades/{idPaciente}(idPaciente=${paciente.id})}">
 						<button type="button" onclick="openModal(); resetPaciente()" class="inline-flex px-4 py-2 rounded text-gray-900 bg-gray-50 hover:bg-gray-200">Cancelar</button>
 					</a>
 					<button type="submit" class="inline-flex px-4 py-2 rounded text-white bg-green-600 hover:bg-green-700">Salvar</button>
